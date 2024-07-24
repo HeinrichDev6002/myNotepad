@@ -52,10 +52,15 @@ public class Window implements ActionListener {
         menuFile.add(iNew);
         iOpen = new JMenuItem("Open");
         iOpen.setActionCommand("Open");
+        iOpen.addActionListener(this);
         menuFile.add(iOpen);
         iSave = new JMenuItem("Save");
+        iSave.setActionCommand("Save");
+        iSave.addActionListener(this);
         menuFile.add(iSave);
         iSaveAs = new JMenuItem("Save As");
+        iSaveAs.setActionCommand("SaveAs");
+        iSaveAs.addActionListener(this);
         menuFile.add(iSaveAs);
         iExit = new JMenuItem("Exit");
         menuFile.add(iExit);
@@ -68,6 +73,11 @@ public class Window implements ActionListener {
             case "New": file.createNewFile();
             break;
             case "Open": file.open();
+            break;
+            case "SaveAs": file.saveAs();
+            break;
+            case "Save": file.save();
+            break;
         }
     }
 }
