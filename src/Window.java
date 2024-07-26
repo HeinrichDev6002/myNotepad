@@ -8,13 +8,15 @@ public class Window implements ActionListener {
     JFrame frame;
     JMenuBar menu;
     JMenu menuFile, menuEdit, menuFormat, menuColor;
-    JMenuItem iNew, iOpen, iSave, iSaveAs, iExit;
+    JMenuItem iNew, iOpen, iSave, iSaveAs, iExit, iBlack, iWhite, iBlue, iRed;
     FunctionFile file = new FunctionFile(this);
     public Window(){
         generateWindow();
         createTextArea();
         createMenuBar();
         createFileMenu();
+
+
         frame.setVisible(true);
     }
 
@@ -50,20 +52,47 @@ public class Window implements ActionListener {
         iNew.addActionListener(this);
         iNew.setActionCommand("New");
         menuFile.add(iNew);
+        //New File
         iOpen = new JMenuItem("Open");
         iOpen.setActionCommand("Open");
         iOpen.addActionListener(this);
         menuFile.add(iOpen);
+        //Open file dialog
         iSave = new JMenuItem("Save");
         iSave.setActionCommand("Save");
         iSave.addActionListener(this);
         menuFile.add(iSave);
+        //Save overriding
         iSaveAs = new JMenuItem("Save As");
         iSaveAs.setActionCommand("SaveAs");
         iSaveAs.addActionListener(this);
         menuFile.add(iSaveAs);
+        //Save as new file
         iExit = new JMenuItem("Exit");
         menuFile.add(iExit);
+        iExit.setActionCommand("Exit");
+        iExit.addActionListener(this);
+        //Exit
+        iBlack = new JMenuItem("Black");
+        iBlack.addActionListener(this);
+        iBlack.setActionCommand("Black");
+        menuColor.add(iBlack);
+
+        iWhite = new JMenuItem("White");
+        iWhite.addActionListener(this);
+        iWhite.setActionCommand("White");
+        menuColor.add(iWhite);
+
+        iBlue = new JMenuItem("Blue");
+        iBlue.addActionListener(this);
+        iBlue.setActionCommand("Blue");
+        menuColor.add(iBlue);
+
+        iRed = new JMenuItem("Red");
+        iRed.addActionListener(this);
+        iRed.setActionCommand("Red");
+        menuColor.add(iRed);
+
     }
 
     @Override
@@ -78,6 +107,19 @@ public class Window implements ActionListener {
             break;
             case "Save": file.save();
             break;
+            case "Exit": file.save(); System.exit(0);
+            break;
+            case "Black": file.colorChooser(1);
+            break;
+            case "White": file.colorChooser(2);
+            break;
+            case "Blue": file.colorChooser(3);
+            break;
+            case "Red": file.colorChooser(4);
+            break;
+
         }
+
+
     }
 }

@@ -67,5 +67,17 @@ e.printStackTrace();
         }
 
     }
+    public void colorChooser(int c){
+       switch (c){
+           case 1: window.textArea.setBackground(Color.black); window.textArea.setForeground(Color.white);
+          break;
+           case 2: window.textArea.setBackground(Color.white); window.textArea.setForeground(Color.black);
+           break;
+           case 3: window.textArea.setBackground(Color.blue); window.textArea.setForeground(Color.white);
+           break;
+           case 4: window.textArea.setBackground(Color.red); window.textArea.setForeground(Color.white);
+           break;
+       }
+    }
 
 }
