@@ -3,12 +3,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Window implements ActionListener {
-    JTextArea textArea;
-    JScrollPane scrollPane;
-    JFrame frame;
-    JMenuBar menu;
-    JMenu menuFile, menuEdit, menuFormat, menuColor;
-    JMenuItem iNew, iOpen, iSave, iSaveAs, iExit, iBlack, iWhite, iBlue, iRed;
+    JTextArea textArea; //Text go here
+    JScrollPane scrollPane; //Scroll
+    JFrame frame; //The main window
+    JMenuBar menu; //Menu bar
+    JMenu menuFile, menuEdit, menuFormat, menuColor; //Menu options
+    JMenuItem iNew, iOpen, iSave, iSaveAs, iExit, iBlack, iWhite, iBlue, iRed, iCopy, iPaste,
+    iRedo, iUndo; //Menu options items
     FunctionFile file = new FunctionFile(this);
     public Window(){
         generateWindow();
@@ -93,6 +94,32 @@ public class Window implements ActionListener {
         iRed.setActionCommand("Red");
         menuColor.add(iRed);
 
+        //Colors
+
+        iCopy = new JMenuItem("Copy");
+        iCopy.addActionListener(this);
+        iCopy.setActionCommand("Copy");
+        menuEdit.add(iCopy);
+
+        //Copy
+
+        iPaste = new JMenuItem("Paste");
+        iPaste.addActionListener(this);
+        iPaste.setActionCommand("Paste");
+        menuEdit.add(iPaste);
+        //Paste
+
+        iUndo = new JMenuItem("Undo");
+        iUndo.setActionCommand("Undo");
+        iUndo.addActionListener(this);
+        menuEdit.add(iUndo);
+        //Undo
+        iRedo = new JMenuItem("Redo");
+        iRedo.setActionCommand("Redo");
+        iRedo.addActionListener(this);
+        iRedo.setEnabled(false);
+        menuEdit.add(iRedo);
+
     }
 
     @Override
@@ -109,6 +136,8 @@ public class Window implements ActionListener {
             break;
             case "Exit": file.save(); System.exit(0);
             break;
+            //File items
+
             case "Black": file.colorChooser(1);
             break;
             case "White": file.colorChooser(2);
@@ -116,6 +145,16 @@ public class Window implements ActionListener {
             case "Blue": file.colorChooser(3);
             break;
             case "Red": file.colorChooser(4);
+            break;
+            //Color items
+
+            case "Paste": file.pasteText();
+            break;
+            case "Copy": file.copyText();
+            break;
+            case "Undo": file.undoText();
+            break;
+            case "Redo": file.redoText();
             break;
 
         }
