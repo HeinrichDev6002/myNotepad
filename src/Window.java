@@ -7,15 +7,17 @@ public class Window implements ActionListener {
     JScrollPane scrollPane; //Scroll
     JFrame frame; //The main window
     JMenuBar menu; //Menu bar
-    JMenu menuFile, menuEdit, menuFormat, menuColor; //Menu options
+    JMenu menuFile, menuEdit, menuFormat, menuColor, menuSize; //Menu options
     JMenuItem iNew, iOpen, iSave, iSaveAs, iExit, iBlack, iWhite, iBlue, iRed, iCopy, iPaste,
     iRedo, iUndo; //Menu options items
+    JMenuItem iComicSans, iArial, iTimesNewRomans, iHelvetica; //Fonts of format
     FunctionFile file = new FunctionFile(this);
     public Window(){
         generateWindow();
         createTextArea();
         createMenuBar();
         createFileMenu();
+        createFont();
 
 
         frame.setVisible(true);
@@ -47,6 +49,8 @@ public class Window implements ActionListener {
         menu.add(menuFormat);
         menuColor = new JMenu("Color");
         menu.add(menuColor);
+        menuSize = new JMenu("Size");
+        menu.add(menuSize);
     }
     public void createFileMenu(){
         iNew = new JMenuItem("New");
@@ -121,6 +125,17 @@ public class Window implements ActionListener {
         menuEdit.add(iRedo);
 
     }
+    public void createFont(){
+        iArial = new JMenuItem("Arial");
+        iArial.addActionListener(this);
+        iArial.setActionCommand("Arial");
+        menuFormat.add(iArial);
+
+        iComicSans = new JMenuItem("Comic Sans");
+        iComicSans.addActionListener(this);
+        iComicSans.setActionCommand("Comic Sans");
+        menuFormat.add(iComicSans);
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -156,6 +171,7 @@ public class Window implements ActionListener {
             break;
             case "Redo": file.redoText();
             break;
+            case "Comic Sans": file.chooseFont(0);
 
         }
 

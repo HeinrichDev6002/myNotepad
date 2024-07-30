@@ -149,6 +149,9 @@ e.printStackTrace();
             }
         }
     }
+    public void chooseFont(int f){
+        window.textArea.setFont(new Font("Comic Sans",Font.BOLD,20));
+    }
 
 
 
