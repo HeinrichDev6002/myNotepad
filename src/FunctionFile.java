@@ -112,7 +112,7 @@ e.printStackTrace();
         }
     }
     public void undoText(){
-        if(window.textArea.getText() != null && fileName != null && fileAdress != null){
+        if(window.textArea.getText() != null && fileName != null && fileAdress != null && !window.textArea.getText().equals("")){
             editableText = window.textArea.getText();
             try{
             BufferedReader br = new BufferedReader(new FileReader(fileAdress + File.separator + fileName));
@@ -150,7 +150,23 @@ e.printStackTrace();
         }
     }
     public void chooseFont(int f){
-        window.textArea.setFont(new Font("Comic Sans",Font.BOLD,20));
+        String e = window.command;
+        switch (e) {
+            case "Comic Sans":
+            window.textArea.setFont(new Font("Comic Sans", Font.PLAIN, f));
+            break;
+            case "Arial":
+                window.textArea.setFont(new Font("Arial", Font.PLAIN, f));
+            break;
+            case "Times New Romans":
+                window.textArea.setFont(new Font("Times New Romans", Font.PLAIN, f));
+            break;
+            case "Helvetica":
+                window.textArea.setFont(new Font("Helvetica", Font.PLAIN, f));
+                break;
+
+
+        }
     }
 
 

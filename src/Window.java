@@ -11,6 +11,7 @@ public class Window implements ActionListener {
     JMenuItem iNew, iOpen, iSave, iSaveAs, iExit, iBlack, iWhite, iBlue, iRed, iCopy, iPaste,
     iRedo, iUndo; //Menu options items
     JMenuItem iComicSans, iArial, iTimesNewRomans, iHelvetica; //Fonts of format
+    String command;
     FunctionFile file = new FunctionFile(this);
     public Window(){
         generateWindow();
@@ -52,7 +53,7 @@ public class Window implements ActionListener {
         menuSize = new JMenu("Size");
         menu.add(menuSize);
     }
-    public void createFileMenu(){
+    public void createFileMenu() {
         iNew = new JMenuItem("New");
         iNew.addActionListener(this);
         iNew.setActionCommand("New");
@@ -125,6 +126,7 @@ public class Window implements ActionListener {
         menuEdit.add(iRedo);
 
     }
+
     public void createFont(){
         iArial = new JMenuItem("Arial");
         iArial.addActionListener(this);
@@ -135,11 +137,21 @@ public class Window implements ActionListener {
         iComicSans.addActionListener(this);
         iComicSans.setActionCommand("Comic Sans");
         menuFormat.add(iComicSans);
+
+        iTimesNewRomans = new JMenuItem("Times New Romans");
+        iTimesNewRomans.addActionListener(this);
+        iTimesNewRomans.setActionCommand("Times New Romans");
+        menuFormat.add(iTimesNewRomans);
+
+        iHelvetica = new JMenuItem("Helvetica");
+        iHelvetica.addActionListener(this);
+        iHelvetica.setActionCommand("Helvetica");
+        menuFormat.add(iHelvetica);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String command = e.getActionCommand();
+          command = e.getActionCommand();
         switch(command){
             case "New": file.createNewFile();
             break;
@@ -171,7 +183,14 @@ public class Window implements ActionListener {
             break;
             case "Redo": file.redoText();
             break;
-            case "Comic Sans": file.chooseFont(0);
+            case "Comic Sans": file.chooseFont(12);
+            break;
+            case "Arial": file.chooseFont(12);
+            break;
+            case "Times New Romans": file.chooseFont(12);
+            break;
+            case "Helvetica": file.chooseFont(12);
+            break;
 
         }
 
