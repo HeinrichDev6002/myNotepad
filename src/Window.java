@@ -11,7 +11,9 @@ public class Window implements ActionListener {
     JMenuItem iNew, iOpen, iSave, iSaveAs, iExit, iBlack, iWhite, iBlue, iRed, iCopy, iPaste,
     iRedo, iUndo; //Menu options items
     JMenuItem iComicSans, iArial, iTimesNewRomans, iHelvetica; //Fonts of format
+    JMenuItem fontSize;
     String command;
+    int sizeCommand;
     FunctionFile file = new FunctionFile(this);
     public Window(){
         generateWindow();
@@ -50,8 +52,8 @@ public class Window implements ActionListener {
         menu.add(menuFormat);
         menuColor = new JMenu("Color");
         menu.add(menuColor);
-        menuSize = new JMenu("Size");
-        menu.add(menuSize);
+        //menuSize = new JMenu("Size");
+        //menu.add(menuSize);
     }
     public void createFileMenu() {
         iNew = new JMenuItem("New");
@@ -125,6 +127,8 @@ public class Window implements ActionListener {
         iRedo.setEnabled(false);
         menuEdit.add(iRedo);
 
+
+
     }
 
     public void createFont(){
@@ -193,6 +197,8 @@ public class Window implements ActionListener {
             break;
 
         }
+
+
 
 
     }
